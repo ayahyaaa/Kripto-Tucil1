@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>CypherKuy</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+      h1 {
+        font-size: 45px;
+        text-align: center;
+        margin: 0;
+        padding: 20px 0;
+        color: #00539F;
+        text-shadow: 3px 3px 1px black;
+      }
+      
+      .identitas {
+        text-align: center;
+        font-size: 10px;
+      }
+
+      p {
+        text-align: center;
+      }
+
+      body {
+        width: 600px;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        padding: 0 20px 20px 20px;
+        border: 5px solid black;
+      }
+
+      html {
+        background-image: url("https://preview.redd.it/lr41m72m2ms41.jpg?width=1920&format=pjpg&auto=webp&s=d4561d11381900125c44c6e78521d4afa8a35b1f");
+      }
+
+      html {
+        font-size: 16px; /* px means "pixels": the base font size is now 10 pixels high  */
+        font-family: "Open Sans"; /* this should be the rest of the output you got from Google fonts */
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1> old Cypher </h1>
+    <p class="identitas">Naufal Yahya - 13519141</p>
+  </body>
+
+  {% if mode=="encrypted" %}
+    <div class="answer">
+      <p>cypher text anda adalah {{answer}}</p>
+    </div>
+    <form action="/decrypt" method="POST">
+      <div class="form-group">
+        <label for="plaintextInput">Plaintext</label>
+        <br>
+        <input name ="originalInput" class="form-control" id="plaintextInput" placeholder="Enter Plaintext">
+        <small id="plaintextdesc" class="form-text text-muted">Isi untuk AutoKey Viginere</small>
+      </div>
+      <div class="form-group">
+        <label for="cyphertextInput">Cypher text</label>
+        <br>
+        <input name ="cyphertextInput" class="form-control" id="cyphertextInput" placeholder="Enter Cyphertext">
+      </div>
+      <div class="form-group">
+        <label for="keyInput">Key</label>
+        <br>
+        <input name ="keyInput" class="form-control" id="keyInput" placeholder="Enter Key">
+      </div>
+      <div class="form-group">
+        <label for="keyInput">Key M</label>
+        <br>
+        <input name ="key-m" class="form-control" id="keyInput" placeholder="Enter Key M">
+        <small id="additionalKey" class="form-text text-muted">Isi untuk Affine (sama dengan enkripsi)</small>
+      </div>
+      <div class="form-group">
+        <label for="keyInput">Key B</label>
+        <br>
+        <input name ="key-b" class="form-control" id="keyInput" placeholder="Enter Key B">
+        <small id="additionalKey" class="form-text text-muted">Isi untuk Affine (sama dengan enkripsi)</small>
+      </div>
+      <div class="form-group">
+        <label for="methodInput">Cyper Method</label>
+        <br>
+        <select name ="methodInput" class="form-control" id="exampleFormControlSelect1">
+          <option>vigenere</option>
+          <option>full-vigenere</option>
+          <option>autokey-vigenere</option>
+          <option>playfair</option>
+          <option>affine</option>
+        </select>
+        <small id="additionalKey" class="form-text text-muted">Isi sama dengan Metode Cypher Enkripsi</small>
+      </div>
+      <button type="submit" class="btn">Decrypt</button>
+    </form>
+
+  {% else %}
+
+  <form action="/encrypt" method="POST" enctype=multipart/form-data>
+    <div class="form-group">
+      <label for="plaintextInput">Plaintext</label>
+      <br>
+      <input name ="plaintextInput" class="form-control" id="plaintextInput" placeholder="Enter Plaintext">
+    </div>
+    <div class="form-group">
+      <label for="keyInput">Key</label>
+      <br>
+      <input name ="keyInput" class="form-control" id="keyInput" placeholder="Enter Key">
+    </div>
+    <div class="form-group">
+      <label for="keyInput">Key M</label>
+      <br>
+      <input name ="key-m" class="form-control" id="keyInput" placeholder="Enter Key M">
+      <small id="additionalKey" class="form-text text-muted">Isi untuk Affine</small>
+    </div>
+    <div class="form-group">
+      <label for="keyInput">Key B</label>
+      <br>
+      <input name ="key-b" class="form-control" id="keyInput" placeholder="Enter Key B">
+      <small id="additionalKey" class="form-text text-muted">Isi untuk Affine</small>
+    </div>
+    <div class="form-group">
+      <label for="methodInput">Cyper Method</label>
+      <br>
+      <select name ="methodInput" class="form-control" id="exampleFormControlSelect1">
+        <option>vigenere</option>
+        <option>full-vigenere</option>
+        <option>autokey-vigenere</option>
+        <option>playfair</option>
+        <option>affine</option>
+      </select>
+    </div>
+      <div class="form-group">
+        <label for="FormControlFile1">Input file</label>
+        <input name="fileInput" type="file" class="form-control-file" id="FormControlFile1">
+      </div>
+    <button type="submit" class="btn">Encrypt</button>
+  </form>
+  <div class="answer">
+    <p>Plain text hasil dekripsi anda adalah {{answer1}}</p>
+  </div>
+
+  {% endif %}
+
+  <script>
+    
+  </script>
+
+</html>

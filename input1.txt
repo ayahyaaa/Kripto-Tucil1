@@ -1,0 +1,4 @@
+kripto
+--key-- {tidak dipakai untuk affine}
+7
+10
